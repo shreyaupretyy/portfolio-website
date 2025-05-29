@@ -92,7 +92,7 @@ const Home = () => {
               {/* Replace the initials circle with actual photo */}
               <div className="w-80 h-80 mx-auto rounded-full overflow-hidden shadow-2xl">
                 <img
-                  src="/assets/images/profile.jpg"
+                  src="/assets/images/profile.JPG"
                   alt="Shreya Uprety"
                   className="w-full h-full object-cover"
                   onError={(e) => {
