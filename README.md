@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my expertise in Machine Learni
 
 ## 🚀 Live Demo
 
-[View Live Portfolio]()
+[View Live Portfolio](https://shreyauprety.vercel.app/)
 
 ## ✨ Features
 
