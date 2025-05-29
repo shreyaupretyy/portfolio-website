@@ -8,48 +8,48 @@ const Skills = () => {
       title: 'Machine Learning & AI',
       icon: <Brain size={32} />,
       skills: [
-        { name: 'Python', level: 95 },
-        { name: 'TensorFlow', level: 85 },
-        { name: 'PyTorch', level: 80 },
-        { name: 'Scikit-learn', level: 90 },
-        { name: 'Pandas', level: 95 },
-        { name: 'NumPy', level: 90 },
+        'Python',
+        'TensorFlow',
+        'PyTorch',
+        'Scikit-learn',
+        'Pandas',
+        'NumPy',
       ],
     },
     {
       title: 'Web Development',
       icon: <Code size={32} />,
       skills: [
-        { name: 'React', level: 85 },
-        { name: 'JavaScript', level: 88 },
-        { name: 'Django', level: 80 },
-        { name: 'Flask', level: 85 },
-        { name: 'Node.js', level: 75 },
-        { name: 'HTML/CSS', level: 90 },
+        'React',
+        'JavaScript',
+        'Express.js',
+        'Flask',
+        'Node.js',
+        'HTML/CSS',
       ],
     },
     {
       title: 'Data & Databases',
       icon: <Database size={32} />,
       skills: [
-        { name: 'SQL', level: 80 },
-        { name: 'MongoDB', level: 75 },
-        { name: 'PostgreSQL', level: 70 },
-        { name: 'Data Visualization', level: 85 },
-        { name: 'Statistical Analysis', level: 80 },
-        { name: 'Big Data Processing', level: 70 },
+        'SQL',
+        'MongoDB',
+        'PostgreSQL',
+        'Data Visualization',
+        'Statistical Analysis',
+        'Big Data Processing',
       ],
     },
     {
       title: 'Tools & Platforms',
       icon: <Wrench size={32} />,
       skills: [
-        { name: 'Git', level: 90 },
-        { name: 'Jupyter Notebook', level: 95 },
-        { name: 'Google Colab', level: 90 },
-        { name: 'Docker', level: 65 },
-        { name: 'Linux', level: 75 },
-        { name: 'AWS', level: 60 },
+        'Git',
+        'Jupyter Notebook',
+        'Google Colab',
+        'Docker',
+        'Linux',
+        'AWS',
       ],
     },
   ];
@@ -91,7 +91,7 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Main Skills Grid */}
+        {/* Main Skills Grid - UPDATED */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
@@ -101,19 +101,13 @@ const Skills = () => {
               <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
                 {category.title}
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-gray-700 font-medium">{skill.name}</span>
-                      <span className="text-gray-500 text-sm">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className="bg-primary-600 h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+                  <div
+                    key={skillIndex}
+                    className="px-3 py-2 bg-white rounded-lg border border-gray-200 text-center hover:border-primary-300 transition-colors duration-200"
+                  >
+                    <span className="text-gray-700 font-medium">{skill}</span>
                   </div>
                 ))}
               </div>
