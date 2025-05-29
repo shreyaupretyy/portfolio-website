@@ -101,11 +101,11 @@ const Skills = () => {
               <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">
                 {category.title}
               </h2>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className="text-center"
+                    className="px-3 py-2 bg-white rounded-lg border border-white text-center hover:border-primary-300 transition-colors duration-200"
                   >
                     <span className="text-gray-700 font-medium">{skill}</span>
                   </div>
