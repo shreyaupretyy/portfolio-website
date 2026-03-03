@@ -62,16 +62,21 @@ const Contact = () => {
     setIsSubmitting(false);
   };
 
-  return (
-    <section id="contact" className="py-24 bg-gray-50/50">
-      <div className="max-w-2xl mx-auto px-6">
-        <h2 className="text-2xl font-bold text-gray-900">Get in Touch</h2>
-        <p className="mt-4 text-gray-500">
-          Have a project in mind or want to discuss opportunities? I'd like to hear
-          from you.
-        </p>
+  const inputClasses =
+    'w-full px-4 py-3 text-sm border border-gray-100 rounded-lg bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-gray-200 focus:border-transparent outline-none transition-all placeholder:text-gray-300';
 
-        <div className="mt-6 flex flex-wrap gap-6 text-sm text-gray-500">
+  return (
+    <section id="contact" className="py-28 border-t border-gray-100">
+      <div className="max-w-xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <span className="font-mono text-sm text-gray-300">05.</span>
+          <h2 className="mt-3 text-2xl font-bold text-gray-900">Get in Touch</h2>
+          <p className="mt-4 text-gray-400 leading-relaxed">
+            Have a project in mind or want to discuss opportunities? I'd like to hear from you.
+          </p>
+        </div>
+
+        <div className="flex justify-center gap-6 mb-10 text-sm text-gray-400">
           <a
             href="mailto:shreyyauprety@gmail.com"
             className="inline-flex items-center gap-2 hover:text-gray-900 transition-colors"
@@ -86,20 +91,20 @@ const Contact = () => {
         </div>
 
         {submitStatus === 'success' && (
-          <div className="mt-8 p-4 bg-green-50 border border-green-200 text-green-700 text-sm rounded-md">
+          <div className="mb-6 p-4 bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm rounded-lg text-center">
             Message sent successfully. I'll get back to you soon.
           </div>
         )}
         {submitStatus === 'error' && (
-          <div className="mt-8 p-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-md">
+          <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-lg text-center">
             Something went wrong. Please try again or email me directly.
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-          <div className="grid sm:grid-cols-2 gap-5">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="name" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
                 Name
               </label>
               <input
@@ -109,12 +114,12 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-shadow bg-white"
+                className={inputClasses}
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label htmlFor="email" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
                 Email
               </label>
               <input
@@ -124,14 +129,14 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-shadow bg-white"
+                className={inputClasses}
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <label htmlFor="subject" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
               Subject
             </label>
             <select
@@ -140,7 +145,7 @@ const Contact = () => {
               value={formData.subject}
               onChange={handleChange}
               required
-              className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-shadow bg-white"
+              className={inputClasses}
             >
               <option value="">Select a subject</option>
               <option value="ML Project Discussion">ML Project Discussion</option>
@@ -152,7 +157,7 @@ const Contact = () => {
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <label htmlFor="message" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
               Message
             </label>
             <textarea
@@ -162,7 +167,7 @@ const Contact = () => {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none transition-shadow bg-white resize-vertical"
+              className={`${inputClasses} resize-vertical`}
               placeholder="Tell me about your project or what you'd like to discuss..."
             />
           </div>
@@ -170,7 +175,7 @@ const Contact = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors ${
+            className={`w-full flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors ${
               isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >

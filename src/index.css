@@ -5,7 +5,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #e2e8f0;
+    color: #0f172a;
   }
 }

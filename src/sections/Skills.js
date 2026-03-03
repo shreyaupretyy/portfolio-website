@@ -34,23 +34,30 @@ const skillGroups = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl font-bold text-gray-900">Skills</h2>
+    <section id="skills" className="py-28 border-t border-gray-100">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center gap-3 mb-12">
+          <span className="font-mono text-sm text-gray-300">04.</span>
+          <h2 className="text-2xl font-bold text-gray-900">Skills</h2>
+          <div className="flex-1 h-px bg-gray-100 ml-4" />
+        </div>
 
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-10">
+        <div className="space-y-10">
           {skillGroups.map((group) => (
             <div key={group.category}>
-              <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider">
+              <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-4">
                 {group.category}
               </h3>
-              <ul className="mt-3 space-y-1.5">
+              <div className="flex flex-wrap gap-2">
                 {group.items.map((skill) => (
-                  <li key={skill} className="text-sm text-gray-500">
+                  <span
+                    key={skill}
+                    className="text-sm text-gray-500 px-3 py-1.5 border border-gray-100 rounded-md bg-gray-50/50 hover:border-gray-200 hover:text-gray-700 transition-colors"
+                  >
                     {skill}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
