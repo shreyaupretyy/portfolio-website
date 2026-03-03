@@ -30,7 +30,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
+    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:py-24">
       <div>
         <div className="mb-6 w-20 h-20 rounded-full overflow-hidden ring-2 ring-slate-100 hover:ring-teal-200 transition-all duration-300">
           <img
