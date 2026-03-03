@@ -1,27 +1,41 @@
 # Portfolio Website - Shreya Uprety
 
-A modern, responsive portfolio website showcasing my expertise in Machine Learning, Data Science, and Full-Stack Development. Built with React and Tailwind CSS.
+A minimal, single-page portfolio website built with React and Tailwind CSS. Features a two-column layout with sticky sidebar navigation, smooth scroll tracking, and a bright, clean design.
 
-## 🚀 Live Demo
+## Live Demo
 
-[View Live Portfolio](https://shreyauprety.vercel.app/)
+[shreyauprety.vercel.app](https://shreyauprety.vercel.app/)
 
-## ✨ Features
+## Features
 
-- **Responsive Design**: Optimized for all devices and screen sizes
-- **Modern UI/UX**: Clean, professional design with smooth animations
-- **Interactive Project Gallery**: Filterable projects by category
-- **Skills Showcase**: Comprehensive technical skills with progress indicators
-- **About Section**: Detailed background, education, and journey timeline
-- **Contact Form**: Direct communication channel
-- **Fast Performance**: Optimized loading and smooth transitions
+- **Single-page scroll layout** with sticky sidebar and active section tracking
+- **Responsive design** — two-column on desktop, single-column with sticky headers on mobile
+- **Project cards** with hover effects linking to GitHub repositories
+- **Contact form** powered by Formspree
+- **Resume download** link
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Frontend**: React.js, JavaScript (ES6+)
+- **Frontend**: React 18, JavaScript (ES6+)
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
-- **Routing**: React Router DOM
-- **Build Tool**: Create React App
 - **Deployment**: Vercel
 
+## Getting Started
+
+```bash
+npm install
+npm start
+```
+
+Create a `.env` file for the contact form:
+
+```
+REACT_APP_FORMSPREE_FORM_ID=your_form_id
+```
+
+## Build
+
+```bash
+npm run build
+```
