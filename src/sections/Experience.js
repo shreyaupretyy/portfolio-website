@@ -1,98 +1,97 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 const experiences = [
   {
+    period: '2026 — Present',
     role: 'LLM Researcher and Engineer',
     company: 'MedforceAI',
-    type: 'Full-time · Remote',
-    period: 'Jan 2026 — Present',
-    bullets: [
-      'Designed and built AI-powered systems for medical pre-consultation and clinic management.',
-      'Architected the transition from a monolithic system to an event-driven, multi-agent architecture.',
-      'Developed and optimized chat and voice agents for medical terminology transcription and interpretation.',
-      'Contributed to technical documentation and investor presentations, simplifying complex AI workflows for diverse audiences.',
-    ],
+    url: 'https://www.linkedin.com/company/medforceai/',
+    description:
+      'Design and build AI-powered systems for medical pre-consultation and clinic management. Architected the transition from a monolithic system to an event-driven, multi-agent architecture. Develop and optimize chat and voice agents for medical terminology transcription and interpretation.',
+    tech: ['Python', 'LLMs', 'RAG', 'FastAPI', 'Multi-agent Systems', 'Docker'],
   },
   {
+    period: '2025 — 2025',
     role: 'AI Fellow',
     company: 'Fusemachines',
-    type: 'Fellowship · Remote',
-    period: 'May 2025 — Dec 2025',
-    bullets: [
-      'Completed an intensive fellowship in advanced machine learning and AI applications.',
-      'Worked on production ML systems, NLP pipelines, and deep learning architectures.',
-    ],
+    url: 'https://fusemachines.com/',
+    description:
+      'Completed an intensive fellowship in advanced machine learning and AI applications. Worked on production ML systems, NLP pipelines, and deep learning architectures with industry mentorship.',
+    tech: ['Python', 'PyTorch', 'NLP', 'Deep Learning', 'MLOps'],
   },
 ];
 
-const education = {
-  degree: 'B.E. Computer Engineering',
-  school: 'Tribhuvan University, IOE — Pulchowk Campus',
-  period: '2022 — 2026',
-  details:
-    'Data Structures & Algorithms, Database Management, Computer Networks, Software Engineering, Microprocessors',
-};
-
 const Experience = () => {
   return (
-    <section id="experience" className="py-28 border-t border-gray-100">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-sm text-gray-300">03.</span>
-          <h2 className="text-2xl font-bold text-gray-900">Experience</h2>
-          <div className="flex-1 h-px bg-gray-100 ml-4" />
-        </div>
+    <section
+      id="experience"
+      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+      aria-label="Work experience"
+    >
+      <div className="sticky top-0 z-20 -mx-6 mb-4 bg-white/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">
+          Experience
+        </h2>
+      </div>
 
-        <div className="relative">
-          <div className="absolute left-0 top-2 bottom-0 w-px bg-gray-100" />
+      <div>
+        <ol className="group/list">
+          {experiences.map((exp) => (
+            <li key={exp.role + exp.company} className="mb-12">
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-50/80 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
 
-          <div className="space-y-12">
-            {experiences.map((exp) => (
-              <div key={exp.role + exp.company} className="relative pl-8">
-                <div className="absolute left-0 top-[7px] w-[7px] h-[7px] rounded-full bg-gray-300 -translate-x-[3px]" />
+                <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-400 sm:col-span-2" aria-label={exp.period}>
+                  {exp.period}
+                </header>
 
-                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                  <h3 className="font-semibold text-gray-900">{exp.role}</h3>
-                  <span className="text-xs font-mono text-gray-400 whitespace-nowrap">
-                    {exp.period}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-400 mt-0.5">{exp.company} · {exp.type}</p>
-
-                <ul className="mt-4 space-y-2">
-                  {exp.bullets.map((bullet, i) => (
-                    <li
-                      key={i}
-                      className="text-sm text-gray-500 leading-relaxed pl-4 relative before:content-['▹'] before:absolute before:left-0 before:text-gray-300 before:text-xs"
+                <div className="z-10 sm:col-span-6">
+                  <h3 className="font-medium leading-snug text-slate-700">
+                    <a
+                      href={exp.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-800 hover:text-teal-600 focus-visible:text-teal-600"
                     >
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+                      <span>
+                        {exp.role} ·{' '}
+                        <span className="inline-block">
+                          {exp.company}
+                          <ArrowUpRight size={14} className="ml-0.5 inline-block -translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
+                        </span>
+                      </span>
+                    </a>
+                  </h3>
+                  <p className="mt-2 text-sm leading-normal text-slate-500">
+                    {exp.description}
+                  </p>
+                  <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                    {exp.tech.map((t) => (
+                      <li key={t} className="mr-1.5 mt-2">
+                        <div className="flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-medium leading-5 text-teal-700">
+                          {t}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ol>
 
-        <div className="mt-16 pt-12 border-t border-gray-100">
-          <div className="flex items-center gap-3 mb-8">
-            <h3 className="text-lg font-semibold text-gray-900">Education</h3>
-          </div>
-          <div className="pl-8 relative">
-            <div className="absolute left-0 top-[7px] w-[7px] h-[7px] rounded-full bg-gray-300 -translate-x-[3px]" />
-            <div className="absolute left-0 top-2 bottom-0 w-px bg-gray-100" />
-
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-              <h4 className="font-medium text-gray-900">{education.degree}</h4>
-              <span className="text-xs font-mono text-gray-400 whitespace-nowrap">
-                {education.period}
-              </span>
-            </div>
-            <p className="text-sm text-gray-400 mt-0.5">{education.school}</p>
-            <p className="text-sm text-gray-500 mt-3 leading-relaxed">
-              {education.details}
-            </p>
-          </div>
+        <div>
+          <a
+            href="/assets/resume/Shreya_Uprety_Resume.pdf"
+            download="Shreya_Uprety_Resume.pdf"
+            className="group inline-flex items-center font-medium leading-tight text-slate-800 hover:text-teal-600 transition-colors"
+          >
+            <span className="border-b border-transparent pb-px group-hover:border-teal-300 transition-colors">
+              View Full Resume
+            </span>
+            <ArrowUpRight size={16} className="ml-1 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>

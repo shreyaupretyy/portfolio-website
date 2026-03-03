@@ -5,13 +5,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  body {
+    @apply bg-white text-slate-600;
+  }
+
   ::selection {
-    background-color: #e2e8f0;
-    color: #0f172a;
+    @apply bg-teal-100 text-teal-900;
   }
 }

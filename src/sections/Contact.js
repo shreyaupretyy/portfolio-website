@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -63,48 +63,49 @@ const Contact = () => {
   };
 
   const inputClasses =
-    'w-full px-4 py-3 text-sm border border-gray-100 rounded-lg bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-gray-200 focus:border-transparent outline-none transition-all placeholder:text-gray-300';
+    'w-full px-4 py-3 text-sm rounded-lg border border-slate-200 bg-white text-slate-700 placeholder:text-slate-300 focus:border-teal-300 focus:ring-2 focus:ring-teal-100 outline-none transition-all';
 
   return (
-    <section id="contact" className="py-28 border-t border-gray-100">
-      <div className="max-w-xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <span className="font-mono text-sm text-gray-300">05.</span>
-          <h2 className="mt-3 text-2xl font-bold text-gray-900">Get in Touch</h2>
-          <p className="mt-4 text-gray-400 leading-relaxed">
-            Have a project in mind or want to discuss opportunities? I'd like to hear from you.
-          </p>
-        </div>
+    <section
+      id="contact"
+      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+      aria-label="Contact"
+    >
+      <div className="sticky top-0 z-20 -mx-6 mb-4 bg-white/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">
+          Contact
+        </h2>
+      </div>
 
-        <div className="flex justify-center gap-6 mb-10 text-sm text-gray-400">
-          <a
-            href="mailto:shreyyauprety@gmail.com"
-            className="inline-flex items-center gap-2 hover:text-gray-900 transition-colors"
-          >
-            <Mail size={14} />
-            shreyyauprety@gmail.com
-          </a>
-          <span className="inline-flex items-center gap-2">
-            <MapPin size={14} />
-            Kathmandu, Nepal
-          </span>
-        </div>
+      <div>
+        <p className="mb-8 text-slate-500 leading-relaxed">
+          Have a project in mind, want to discuss an opportunity, or just want to
+          say hi? My inbox is always open. Drop me a message and I'll get back to
+          you as soon as I can.
+        </p>
 
         {submitStatus === 'success' && (
-          <div className="mb-6 p-4 bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm rounded-lg text-center">
+          <div className="mb-6 rounded-lg bg-teal-50 px-4 py-3 text-sm text-teal-700 border border-teal-100">
             Message sent successfully. I'll get back to you soon.
           </div>
         )}
         {submitStatus === 'error' && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 text-sm rounded-lg text-center">
-            Something went wrong. Please try again or email me directly.
+          <div className="mb-6 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600 border border-red-100">
+            Something went wrong. Please try again or email me directly at{' '}
+            <a href="mailto:shreyyauprety@gmail.com" className="font-medium underline">
+              shreyyauprety@gmail.com
+            </a>
+            .
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="name" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
+              <label
+                htmlFor="name"
+                className="mb-1.5 block text-xs font-bold uppercase tracking-widest text-slate-400"
+              >
                 Name
               </label>
               <input
@@ -119,7 +120,10 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
+              <label
+                htmlFor="email"
+                className="mb-1.5 block text-xs font-bold uppercase tracking-widest text-slate-400"
+              >
                 Email
               </label>
               <input
@@ -136,7 +140,10 @@ const Contact = () => {
           </div>
 
           <div>
-            <label htmlFor="subject" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
+            <label
+              htmlFor="subject"
+              className="mb-1.5 block text-xs font-bold uppercase tracking-widest text-slate-400"
+            >
               Subject
             </label>
             <select
@@ -157,7 +164,10 @@ const Contact = () => {
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-xs font-medium text-gray-500 mb-1.5 uppercase tracking-wider">
+            <label
+              htmlFor="message"
+              className="mb-1.5 block text-xs font-bold uppercase tracking-widest text-slate-400"
+            >
               Message
             </label>
             <textarea
@@ -175,13 +185,13 @@ const Contact = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors ${
+            className={`inline-flex items-center gap-2 rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 ${
               isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
             {isSubmitting ? (
               <>
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                 Sending...
               </>
             ) : (

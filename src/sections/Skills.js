@@ -6,7 +6,7 @@ const skillGroups = [
     items: ['Python', 'JavaScript', 'C++', 'C', 'Java', 'SQL'],
   },
   {
-    category: 'ML / AI',
+    category: 'Machine Learning & AI',
     items: [
       'PyTorch',
       'TensorFlow',
@@ -34,33 +34,34 @@ const skillGroups = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-28 border-t border-gray-100">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-sm text-gray-300">04.</span>
-          <h2 className="text-2xl font-bold text-gray-900">Skills</h2>
-          <div className="flex-1 h-px bg-gray-100 ml-4" />
-        </div>
+    <section
+      id="skills"
+      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+      aria-label="Skills"
+    >
+      <div className="sticky top-0 z-20 -mx-6 mb-4 bg-white/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">
+          Skills
+        </h2>
+      </div>
 
-        <div className="space-y-10">
-          {skillGroups.map((group) => (
-            <div key={group.category}>
-              <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-widest mb-4">
-                {group.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="text-sm text-gray-500 px-3 py-1.5 border border-gray-100 rounded-md bg-gray-50/50 hover:border-gray-200 hover:text-gray-700 transition-colors"
-                  >
+      <div className="space-y-8">
+        {skillGroups.map((group) => (
+          <div key={group.category}>
+            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">
+              {group.category}
+            </h3>
+            <ul className="flex flex-wrap" aria-label={group.category}>
+              {group.items.map((skill) => (
+                <li key={skill} className="mr-1.5 mt-2">
+                  <div className="flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-medium leading-5 text-teal-700">
                     {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );

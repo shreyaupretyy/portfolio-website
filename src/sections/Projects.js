@@ -34,49 +34,68 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-28 border-t border-gray-100">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-sm text-gray-300">02.</span>
-          <h2 className="text-2xl font-bold text-gray-900">Projects</h2>
-          <div className="flex-1 h-px bg-gray-100 ml-4" />
-        </div>
+    <section
+      id="projects"
+      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+      aria-label="Selected projects"
+    >
+      <div className="sticky top-0 z-20 -mx-6 mb-4 bg-white/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">
+          Projects
+        </h2>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+      <div>
+        <ul className="group/list">
           {projects.map((project) => (
-            <a
-              key={project.title}
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block rounded-lg border border-gray-100 p-6 hover:shadow-lg hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-200"
-            >
-              <div className="flex items-start justify-between">
-                <h3 className="font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
-                  {project.title}
-                </h3>
-                <ArrowUpRight
-                  size={16}
-                  className="text-gray-300 group-hover:text-gray-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-0.5"
-                />
-              </div>
+            <li key={project.title} className="mb-12">
+              <div className="group relative grid pb-1 transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-50/80 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
 
-              <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-                {project.description}
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[11px] font-mono px-2 py-0.5 text-gray-400 bg-gray-50 rounded"
-                  >
-                    {t}
-                  </span>
-                ))}
+                <div className="z-10">
+                  <h3 className="font-medium leading-snug text-slate-700">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-800 hover:text-teal-600 focus-visible:text-teal-600"
+                    >
+                      <span>
+                        {project.title}
+                        <ArrowUpRight size={14} className="ml-1 inline-block -translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
+                      </span>
+                    </a>
+                  </h3>
+                  <p className="mt-2 text-sm leading-normal text-slate-500">
+                    {project.description}
+                  </p>
+                  <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                    {project.tech.map((t) => (
+                      <li key={t} className="mr-1.5 mt-2">
+                        <div className="flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-medium leading-5 text-teal-700">
+                          {t}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </a>
+            </li>
           ))}
+        </ul>
+
+        <div className="mt-4">
+          <a
+            href="https://github.com/shreyaupretyy?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center font-medium leading-tight text-slate-800 hover:text-teal-600 transition-colors"
+          >
+            <span className="border-b border-transparent pb-px group-hover:border-teal-300 transition-colors">
+              View Full Project Archive
+            </span>
+            <ArrowUpRight size={16} className="ml-1 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>

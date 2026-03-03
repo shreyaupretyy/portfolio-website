@@ -2,39 +2,63 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="py-28 border-t border-gray-100">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-10">
-          <span className="font-mono text-sm text-gray-300">01.</span>
-          <h2 className="text-2xl font-bold text-gray-900">About</h2>
-          <div className="flex-1 h-px bg-gray-100 ml-4" />
-        </div>
+    <section
+      id="about"
+      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+      aria-label="About me"
+    >
+      <div className="sticky top-0 z-20 -mx-6 mb-4 bg-white/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">
+          About
+        </h2>
+      </div>
 
-        <div className="space-y-5 text-gray-500 leading-[1.8]">
-          <p>
-            I work on AI systems that solve real problems in healthcare, finance, and
-            legal tech. At{' '}
-            <span className="text-gray-900 font-medium">MedforceAI</span>, I design
-            and build multi-agent architectures for medical pre-consultation and clinic
-            management — from chat and voice agents to event-driven pipelines handling
-            medical terminology transcription and interpretation.
-          </p>
-          <p>
-            My background spans the full ML lifecycle: training and fine-tuning models,
-            building retrieval-augmented generation pipelines, and deploying production
-            systems with FastAPI and Docker. I focus on{' '}
-            <span className="text-gray-900 font-medium">applied machine learning</span>{' '}
-            — taking research ideas and turning them into working software that people
-            actually use.
-          </p>
-          <p>
-            Currently completing a B.E. in Computer Engineering at{' '}
-            <span className="text-gray-900 font-medium">Pulchowk Campus</span>{' '}
-            (Tribhuvan University). Previously an AI Fellow at{' '}
-            <span className="text-gray-900 font-medium">Fusemachines</span>, where I
-            deepened my work in advanced ML, NLP, and production AI systems.
-          </p>
-        </div>
+      <div className="text-slate-500 leading-relaxed space-y-4">
+        <p>
+          Back in 2022, I started my computer engineering degree and quickly fell
+          into the world of machine learning and AI. Fast-forward to today, and
+          I've had the privilege of building AI systems at a{' '}
+          <a
+            href="https://www.linkedin.com/company/medforceai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-slate-700 hover:text-teal-600 transition-colors"
+          >
+            healthcare AI startup
+          </a>
+          , completing an intensive{' '}
+          <span className="font-medium text-slate-700">AI fellowship</span> at{' '}
+          <a
+            href="https://fusemachines.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-slate-700 hover:text-teal-600 transition-colors"
+          >
+            Fusemachines
+          </a>
+          , and shipping research-grade ML systems into production.
+        </p>
+        <p>
+          My main focus these days is designing and building multi-agent AI
+          architectures at{' '}
+          <a
+            href="https://www.linkedin.com/company/medforceai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-slate-700 hover:text-teal-600 transition-colors"
+          >
+            MedforceAI
+          </a>
+          {' '}— from chat and voice agents handling medical terminology to
+          event-driven pipelines for clinic management. I work across the full
+          stack of applied ML: fine-tuning models, building RAG pipelines, and
+          deploying production systems with FastAPI and Docker.
+        </p>
+        <p>
+          When I'm not engineering AI systems, I'm usually exploring new research
+          papers, contributing to open-source projects, or working on side
+          projects in NLP and computer vision.
+        </p>
       </div>
     </section>
   );
