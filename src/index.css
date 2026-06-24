@@ -5,16 +5,40 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    @apply bg-white text-slate-600;
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'kern', 'liga';
   }
 
   ::selection {
-    @apply bg-teal-100 text-teal-900;
+    background: #1C1A16;
+    color: #FBFAF7;
   }
+
+  a {
+    text-underline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Section eyebrow: mono index + label, used to anchor each section */
+  .eyebrow {
+    @apply flex items-center gap-3 font-mono text-xs uppercase tracking-label text-faint;
+  }
+
+  /* Inline prose links: thin underline, accent on hover */
+  .link {
+    @apply font-medium text-ink underline decoration-line decoration-1 transition-colors hover:text-accent hover:decoration-accent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

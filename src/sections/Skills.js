@@ -1,70 +1,33 @@
 import React from 'react';
+import Section from '../components/Section';
 
-const skillGroups = [
+const groups = [
+  { category: 'Languages', items: ['Python', 'JavaScript', 'SQL'] },
   {
-    category: 'Programming',
-    items: ['Python', 'JavaScript', 'C++', 'C', 'Java', 'SQL'],
+    category: 'AI / ML',
+    items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'LangChain', 'LangGraph', 'LLaMA', 'YOLOv8', 'Ollama', 'RAG', 'Computer Vision'],
   },
-  {
-    category: 'Machine Learning & AI',
-    items: [
-      'PyTorch',
-      'TensorFlow',
-      'Scikit-learn',
-      'Hugging Face',
-      'LangChain',
-      'RAG',
-      'NLP',
-      'Computer Vision',
-    ],
-  },
-  {
-    category: 'Backend',
-    items: ['FastAPI', 'Flask', 'Django', 'Node.js', 'REST APIs', 'WebSockets'],
-  },
-  {
-    category: 'Frontend',
-    items: ['React', 'HTML / CSS', 'Tailwind CSS', 'Chart.js'],
-  },
-  {
-    category: 'Tools',
-    items: ['Git', 'Docker', 'Linux', 'CI/CD', 'Jupyter', 'FAISS'],
-  },
+  { category: 'Web & Backend', items: ['FastAPI', 'Django', 'Flask', 'React', 'Next.js', 'Tailwind CSS'] },
+  { category: 'Data & Infra', items: ['PostgreSQL', 'MySQL', 'SQLAlchemy', 'FAISS', 'ChromaDB', 'Docker', 'Google Cloud', 'Git'] },
 ];
 
-const Skills = () => {
-  return (
-    <section
-      id="skills"
-      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
-      aria-label="Skills"
-    >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 bg-white/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">
-          Skills
-        </h2>
-      </div>
-
-      <div className="space-y-8">
-        {skillGroups.map((group) => (
-          <div key={group.category}>
-            <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">
-              {group.category}
-            </h3>
-            <ul className="flex flex-wrap" aria-label={group.category}>
-              {group.items.map((skill) => (
-                <li key={skill} className="mr-1.5 mt-2">
-                  <div className="flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-medium leading-5 text-teal-700">
-                    {skill}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+const Skills = () => (
+  <Section id="stack" index="05" label="Stack">
+    <p className="mb-8 max-w-prose text-sm leading-relaxed text-muted">
+      Tools I reach for often, grouped by where they sit. Python and FastAPI are
+      where I am fastest; the rest I pick up as a project needs them.
+    </p>
+    <dl className="divide-y divide-line">
+      {groups.map((group) => (
+        <div key={group.category} className="grid gap-1 py-4 sm:grid-cols-[7rem_1fr] sm:gap-6">
+          <dt className="pt-0.5 font-mono text-xs text-faint">
+            {group.category}
+          </dt>
+          <dd className="text-sm text-ink">{group.items.join(', ')}</dd>
+        </div>
+      ))}
+    </dl>
+  </Section>
+);
 
 export default Skills;

@@ -92,3 +92,8 @@ logs
 
 # Claude
 .claude
+# LaTeX resume source (local only)
+/main.tex
+/main.pdf
+/main.aux
+/main.out

@@ -1,105 +1,99 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import Section from '../components/Section';
 
 const projects = [
   {
     title: 'Medical QA System',
-    description:
-      'A retrieval-augmented generation pipeline for clinical question-answering. Combines multi-stage retrieval (BM25 + semantic search), cross-encoder reranking, and multi-hop reasoning with Chain-of-Thought and Tree-of-Thought strategies. Includes hallucination detection and medical safety verification.',
-    tech: ['Python', 'RAG', 'LangChain', 'FAISS', 'BM25'],
+    kind: 'RAG / clinical Q&A',
+    problem:
+      'A single-pass RAG setup kept answering clinical questions that the retrieved passages did not actually support.',
+    detail:
+      'I built a multi-stage pipeline with three-tier retrieval (BM25 for exact terms, FAISS for meaning, and a concept-based pass using UMLS expansion), then layered hybrid reasoning, confidence calibration, and a safety-verification module on top. The hard part was not retrieval but knowing when to refuse, so ungrounded questions get a "not enough evidence" answer instead of a fluent guess.',
+    stack: ['Python', 'LangChain', 'LangGraph', 'FAISS', 'BM25', 'UMLS'],
     github: 'https://github.com/shreyaupretyy/medical-qa-system',
   },
   {
     title: 'LegalDoc RAG',
-    description:
-      'A modular RAG system for legal document analysis with hybrid retrieval, knowledge graph query expansion, cross-encoder reranking, and LoRA-tuned LLaMA generation. Features NER-based preprocessing and hallucination validation for reliable legal research.',
-    tech: ['Python', 'LLaMA', 'LoRA', 'FAISS', 'NER', 'Streamlit'],
+    kind: 'RAG / legal research',
+    problem:
+      'Legal questions rarely match the wording of the clause that answers them, so plain semantic search missed the relevant passages.',
+    detail:
+      'Hybrid BM25 and FAISS retrieval feeds a LoRA-tuned LLaMA for the legal reasoning, so the model could be fine-tuned on a single GPU. I shipped it as a full app: a React and Tailwind frontend over a FastAPI backend with a SQLAlchemy ORM, plus a validation pass that flags answers not backed by a cited passage.',
+    stack: ['Python', 'LLaMA', 'LoRA', 'FAISS', 'FastAPI', 'React'],
     github: 'https://github.com/shreyaupretyy/legaldoc-rag',
   },
   {
     title: 'StockSage',
-    description:
-      'An AI-powered stock analysis platform for the Nepali stock market combining ML-based price forecasting with historical market data. Features sector-wise analysis, company profiles, and an interactive analytics dashboard for data-driven investment insights.',
-    tech: ['Python', 'Flask', 'React', 'Tailwind CSS', 'ML', 'REST API'],
+    kind: 'Forecasting / web app',
+    problem:
+      'Most market tools ignore the Nepali (NEPSE) market, and the data that exists is scattered and messy.',
+    detail:
+      'I built forecasting dashboards that pair price models with sentiment analysis on market news, served from a Django backend with a React frontend. Most of the work was the data: trading-day gaps, splits, and the long stretches where a stock simply does not trade.',
+    stack: ['Python', 'Django', 'React', 'scikit-learn', 'NLP'],
     github: 'https://github.com/shreyaupretyy/StockSage',
   },
   {
     title: 'Plant Disease Detection',
-    description:
-      'A deep learning system for identifying plant diseases from leaf images. Uses convolutional neural networks trained on labeled datasets to classify diseases across plant species, enabling early diagnosis and treatment recommendations for agriculture.',
-    tech: ['Python', 'CNN', 'Computer Vision', 'Jupyter', 'Deep Learning'],
+    kind: 'Computer vision',
+    problem:
+      'Classifying crop diseases from a single leaf photo so a first diagnosis does not need a lab.',
+    detail:
+      'A multi-crop classifier spanning 34 disease classes across 8 crop species, built by transfer learning on ResNet50, EfficientNet-B0, and a Vision Transformer and comparing them. It taught me how much augmentation and class balance matter when the data leans toward a few common diseases, and why clean-split accuracy overstates real-world performance.',
+    stack: ['Python', 'PyTorch', 'ResNet50', 'EfficientNet', 'ViT'],
     github: 'https://github.com/shreyaupretyy/plant-disease-detection',
   },
 ];
 
-const Projects = () => {
-  return (
-    <section
-      id="projects"
-      className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
-      aria-label="Selected projects"
-    >
-      <div className="sticky top-0 z-20 -mx-6 mb-4 bg-white/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:hidden">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-slate-900">
-          Projects
-        </h2>
-      </div>
-
-      <div>
-        <ul className="group/list">
-          {projects.map((project) => (
-            <li key={project.title} className="mb-12">
-              <div className="group relative grid pb-1 transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-50/80 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
-
-                <div className="z-10">
-                  <h3 className="font-medium leading-snug text-slate-700">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-800 hover:text-teal-600 focus-visible:text-teal-600"
-                    >
-                      <span>
-                        {project.title}
-                        <ArrowUpRight size={14} className="ml-1 inline-block -translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
-                      </span>
-                    </a>
-                  </h3>
-                  <p className="mt-2 text-sm leading-normal text-slate-500">
-                    {project.description}
-                  </p>
-                  <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                    {project.tech.map((t) => (
-                      <li key={t} className="mr-1.5 mt-2">
-                        <div className="flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-medium leading-5 text-teal-700">
-                          {t}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-4">
-          <a
-            href="https://github.com/shreyaupretyy?tab=repositories"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center font-medium leading-tight text-slate-800 hover:text-teal-600 transition-colors"
-          >
-            <span className="border-b border-transparent pb-px group-hover:border-teal-300 transition-colors">
-              View Full Project Archive
+const Projects = () => (
+  <Section id="projects" index="03" label="Selected Projects">
+    <div className="divide-y divide-line">
+      {projects.map((project, i) => (
+        <article key={project.title} className={i === 0 ? 'pb-10' : 'py-10 last:pb-0'}>
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="font-display text-2xl font-medium leading-tight text-ink">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-baseline gap-1 hover:text-accent"
+              >
+                {project.title}
+                <ArrowUpRight
+                  size={18}
+                  className="translate-y-0.5 text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                />
+              </a>
+            </h3>
+            <span className="shrink-0 font-mono text-xs text-faint">
+              {project.kind}
             </span>
-            <ArrowUpRight size={16} className="ml-1 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
+          </div>
+          <p className="mt-3 max-w-prose text-sm font-medium leading-relaxed text-ink">
+            {project.problem}
+          </p>
+          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted">
+            {project.detail}
+          </p>
+          <p className="mt-3 font-mono text-xs text-faint">
+            {project.stack.join('  /  ')}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div className="mt-10">
+      <a
+        href="https://github.com/shreyaupretyy?tab=repositories"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group inline-flex items-center gap-1 text-sm font-medium text-ink hover:text-accent"
+      >
+        More on GitHub
+        <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      </a>
+    </div>
+  </Section>
+);
 
 export default Projects;
